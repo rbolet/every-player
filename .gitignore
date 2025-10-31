@@ -55,6 +55,8 @@ coverage/
 # Build outputs
 build/
 dist/
+# Tamagui
+apps/mobile/.tamagui/
 
 # Planning documents
 docs/BRANDING.md

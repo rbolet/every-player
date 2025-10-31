@@ -1,14 +1,18 @@
-import { Stack } from 'expo-router';
-import { TamaguiProvider, createTamagui } from 'tamagui';
-import { config } from '@tamagui/config/v3';
-
-const tamaguiConfig = createTamagui(config);
+import { Stack } from "expo-router";
+import { TamaguiProvider } from "tamagui";
+import { tamaguiConfig } from "../tamagui.config";
 
 export default function RootLayout() {
   return (
     <TamaguiProvider config={tamaguiConfig}>
-      <Stack>
-        <Stack.Screen name="index" options={{ title: 'EveryPlayer' }} />
+      <Stack
+        screenOptions={{
+          headerTitle: "EveryPlayer",
+          headerStyle: { backgroundColor: "#0A0E8F" },
+          headerTintColor: "#fff",
+        }}
+      >
+        <Stack.Screen name="index" />
       </Stack>
     </TamaguiProvider>
   );

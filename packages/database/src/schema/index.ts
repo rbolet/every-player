@@ -1,8 +1,7 @@
 /**
  * Database schema definitions
- * 
- * Schema files will be organized as:
- * - users.ts: Auth and user-related tables (Phase 2)
+ *
+ * Schema files are organized as:
  * - divisions.ts: Divisions, leagues, seasons
  * - formations.ts: Formations, positions
  * - teams.ts: Teams
@@ -10,7 +9,9 @@
  * - games.ts: Games, periods, assignments, absences
  */
 
-// Placeholder - schemas will be added based on data structure document
-export const schema = {
-  // Schema exports will be added here
-};
+// Export all schemas
+export * from "./divisions";
+export * from "./formations";
+export * from "./teams";
+export * from "./players";
+export * from "./games";

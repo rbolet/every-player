@@ -6,7 +6,8 @@
     "lib": ["esnext"],
     "jsx": "react-native",
     "module": "esnext",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": false
   }
 }

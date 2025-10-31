@@ -55,3 +55,6 @@ coverage/
 # Build outputs
 build/
 dist/
+
+# Planning documents
+docs/BRANDING.md

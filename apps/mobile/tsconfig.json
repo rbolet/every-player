@@ -1,0 +1,19 @@
+{
+  "extends": "@every-player/typescript-config/expo.json",
+  "compilerOptions": {
+    "jsx": "react-native",
+    "composite": true,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

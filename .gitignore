@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Expo
+.expo/
+dist/
+web-build/
+
+# Native
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.ipa
+*.apk
+
+# Metro
+.metro-health-check*
+
+# Debugging
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# Turborepo
+.turbo/
+
+# macOS
+.DS_Store
+*.pem
+
+# Local environment files
+.env*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# TypeScript
+*.tsbuildinfo
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+coverage/
+
+# Build outputs
+build/
+dist/

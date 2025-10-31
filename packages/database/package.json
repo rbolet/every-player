@@ -1,0 +1,26 @@
+{
+  "name": "@every-player/database",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "lint": "eslint .",
+    "type-check": "tsc --noEmit",
+    "generate": "drizzle-kit generate",
+    "push": "drizzle-kit push"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.44.7",
+    "drizzle-zod": "^0.8.3",
+    "zod": "^4.1.12",
+    "@every-player/types": "workspace:*"
+  },
+  "devDependencies": {
+    "@every-player/typescript-config": "workspace:*",
+    "@every-player/eslint-config": "workspace:*",
+    "@every-player/prettier-config": "workspace:*",
+    "drizzle-kit": "^0.31.6",
+    "typescript": "~5.9.3"
+  }
+}

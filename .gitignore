@@ -51,6 +51,8 @@ yarn-error.*
 
 # Testing
 coverage/
+*.coverage
+.nyc_output/
 
 # Build outputs
 build/

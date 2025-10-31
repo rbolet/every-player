@@ -9,16 +9,20 @@
 ## 1. PROJECT OVERVIEW
 
 ### 1.1 Project Description
+
 Youth soccer team roster management system with mobile/web client and future API sync capabilities.
 
 ### 1.2 Architecture Philosophy
+
 - **DDD + TDD Hybrid**: Domain-Driven Design principles with Test-Driven Development for features
 - **Type-Safe Throughout**: TypeScript strict mode, Zod runtime validation, Drizzle type-safe queries
 - **Phase 2 Ready**: All Phase 1 decisions optimize for smooth Phase 2 (REST API) integration
 - **Offline-First**: Local data storage in Phase 1, sync architecture patterns embedded for Phase 2
 
 ### 1.3 Portfolio Considerations
+
 Technology choices prioritize:
+
 1. Production-readiness and fit for requirements
 2. Established/supported/documented tools
 3. Trending upward in industry adoption
@@ -28,46 +32,51 @@ Technology choices prioritize:
 ## 2. TECHNOLOGY STACK
 
 ### 2.1 Core Framework
-| Layer | Technology | Version | Rationale |
-|-------|-----------|---------|-----------|
-| Runtime | React Native + Expo | Latest SDK | Cross-platform (iOS/Android/Web), industry standard |
-| Language | TypeScript | 5.x | Type safety, developer experience |
-| Package Manager | pnpm | 8.x+ | Performance, efficient disk usage, strict dependency management |
-| Monorepo | Turborepo | 1.x | Build caching, task orchestration, minimal config |
+
+| Layer           | Technology          | Version    | Rationale                                                       |
+| --------------- | ------------------- | ---------- | --------------------------------------------------------------- |
+| Runtime         | React Native + Expo | Latest SDK | Cross-platform (iOS/Android/Web), industry standard             |
+| Language        | TypeScript          | 5.x        | Type safety, developer experience                               |
+| Package Manager | pnpm                | 8.x+       | Performance, efficient disk usage, strict dependency management |
+| Monorepo        | Turborepo           | 1.x        | Build caching, task orchestration, minimal config               |
 
 ### 2.2 Frontend Stack
-| Component | Technology | Rationale |
-|-----------|-----------|-----------|
-| UI Library | Tamagui | Universal (mobile + web), performance-optimized, trending up, modern DX |
-| Navigation | Expo Router | File-based, universal routing, Expo recommended |
-| State Management | Zustand | Minimal, performant, trending up |
-| Forms | react-hook-form + Zod | Type-safe validation, performance |
+
+| Component        | Technology            | Rationale                                                               |
+| ---------------- | --------------------- | ----------------------------------------------------------------------- |
+| UI Library       | Tamagui               | Universal (mobile + web), performance-optimized, trending up, modern DX |
+| Navigation       | Expo Router           | File-based, universal routing, Expo recommended                         |
+| State Management | Zustand               | Minimal, performant, trending up                                        |
+| Forms            | react-hook-form + Zod | Type-safe validation, performance                                       |
 
 ### 2.3 Data Layer
-| Component | Technology | Rationale |
-|-----------|-----------|-----------|
-| Database | expo-sqlite | Native SQLite, relational, mirrors Phase 2 |
-| ORM | Drizzle ORM | Type-safe, TypeScript-first, excellent DX |
-| Validation | Zod | Runtime type validation, API boundary protection |
+
+| Component     | Technology  | Rationale                                          |
+| ------------- | ----------- | -------------------------------------------------- |
+| Database      | expo-sqlite | Native SQLite, relational, mirrors Phase 2         |
+| ORM           | Drizzle ORM | Type-safe, TypeScript-first, excellent DX          |
+| Validation    | Zod         | Runtime type validation, API boundary protection   |
 | Schema Bridge | drizzle-zod | Auto-generate Zod schemas from Drizzle definitions |
 
 ### 2.4 Testing & Quality
-| Type | Technology | Coverage Target |
-|------|-----------|-----------------|
-| Unit Tests | Jest | Critical/complex units only |
-| Integration Tests | Jest + React Native Testing Library | All features |
-| E2E Tests | Detox | Critical user flows |
-| Component Dev | Storybook (React Native) | All presentational components |
-| Linting | ESLint + TypeScript ESLint | 100% |
-| Formatting | Prettier | 100% |
-| Git Hooks | Husky + lint-staged | Pre-commit enforcement |
+
+| Type              | Technology                          | Coverage Target               |
+| ----------------- | ----------------------------------- | ----------------------------- |
+| Unit Tests        | Jest                                | Critical/complex units only   |
+| Integration Tests | Jest + React Native Testing Library | All features                  |
+| E2E Tests         | Detox                               | Critical user flows           |
+| Component Dev     | Storybook (React Native)            | All presentational components |
+| Linting           | ESLint + TypeScript ESLint          | 100%                          |
+| Formatting        | Prettier                            | 100%                          |
+| Git Hooks         | Husky + lint-staged                 | Pre-commit enforcement        |
 
 ### 2.5 Build & Deployment
-| Component | Technology | Notes |
-|-----------|-----------|-------|
-| Build Service | EAS (Expo Application Services) | Cloud builds, OTA updates, professional workflow |
-| CI/CD | EAS Build + GitHub Actions | Automated testing and builds |
-| Environment Config | expo-constants + dotenv | Type-safe environment variables |
+
+| Component          | Technology                      | Notes                                            |
+| ------------------ | ------------------------------- | ------------------------------------------------ |
+| Build Service      | EAS (Expo Application Services) | Cloud builds, OTA updates, professional workflow |
+| CI/CD              | EAS Build + GitHub Actions      | Automated testing and builds                     |
+| Environment Config | expo-constants + dotenv         | Type-safe environment variables                  |
 
 ---
 
@@ -174,6 +183,7 @@ roster-manager/
 ## 4. PHASE 1 DEVELOPMENT SETUP
 
 ### 4.1 Initial Setup Commands
+
 ```bash
 # Initialize monorepo
 pnpm init
@@ -196,6 +206,7 @@ pnpm install
 ### 4.2 Package Installation Matrix
 
 #### Root (workspace-level)
+
 ```json
 {
   "devDependencies": {
@@ -208,6 +219,7 @@ pnpm install
 ```
 
 #### apps/mobile
+
 ```json
 {
   "dependencies": {
@@ -240,6 +252,7 @@ pnpm install
 ```
 
 #### packages/database
+
 ```json
 {
   "dependencies": {
@@ -255,6 +268,7 @@ pnpm install
 ```
 
 #### packages/domain
+
 ```json
 {
   "dependencies": {
@@ -270,6 +284,7 @@ pnpm install
 ### 4.3 Configuration Files
 
 #### turbo.json
+
 ```json
 {
   "$schema": "https://turbo.build/schema.json",
@@ -295,13 +310,15 @@ pnpm install
 ```
 
 #### pnpm-workspace.yaml
+
 ```yaml
 packages:
-  - 'apps/*'
-  - 'packages/*'
+  - "apps/*"
+  - "packages/*"
 ```
 
 #### Root tsconfig.json
+
 ```json
 {
   "extends": "@every-player/typescript-config/base.json"
@@ -315,6 +332,7 @@ packages:
 ## 5. DATABASE ARCHITECTURE
 
 ### 5.1 Schema Design Principles
+
 1. **Phase 2 Compatibility**: Schema mirrors expected Laravel MySQL/PostgreSQL structure
 2. **Normalization**: 3NF minimum, balance between normalization and query performance
 3. **Sync-Ready**: Include metadata columns for future sync (created_at, updated_at, deleted_at)
@@ -328,46 +346,51 @@ Core entity schemas will be created in `packages/database/src/schema/` following
 
 ```typescript
 // Example structure for entity schemas
-import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
+import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
 
-export const exampleEntity = sqliteTable('example_entity', {
-  id: text('id').primaryKey(), // UUID
+export const exampleEntity = sqliteTable("example_entity", {
+  id: text("id").primaryKey(), // UUID
   // ... entity-specific fields defined in data structure document
-  createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
-  updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull(),
-  deletedAt: integer('deleted_at', { mode: 'timestamp' }), // Soft delete for sync
+  createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
+  updatedAt: integer("updated_at", { mode: "timestamp" }).notNull(),
+  deletedAt: integer("deleted_at", { mode: "timestamp" }), // Soft delete for sync
 });
 ```
 
 **Required metadata columns for all entities**:
+
 - `id`: UUID primary key (client-generated)
 - `createdAt`: Timestamp (for sync)
 - `updatedAt`: Timestamp (for conflict resolution)
 - `deletedAt`: Timestamp nullable (for soft deletes and sync)
 
 ### 5.3 Migration Strategy
+
 - **Drizzle Kit**: Generate migrations from schema changes
 - **Versioning**: Sequential numbering (0001_init.sql, 0002_add_games.sql)
 - **Phase 2 Sync**: Migrations tracked in sync metadata table for API coordination
 
 ### 5.4 Zod Integration (drizzle-zod)
+
 ```typescript
 // packages/database/src/validators/index.ts
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
-import { exampleEntity } from '../schema';
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { exampleEntity } from "../schema";
 
 // Auto-generated from Drizzle schema
 export const insertExampleSchema = createInsertSchema(exampleEntity);
 export const selectExampleSchema = createSelectSchema(exampleEntity);
 
 // Custom refinements for business rules can be added
-export const createExampleSchema = insertExampleSchema.omit({
-  id: true,
-  createdAt: true,
-  updatedAt: true,
-}).extend({
-  // Add custom validation rules here
-});
+export const createExampleSchema = insertExampleSchema
+  .omit({
+    id: true,
+    createdAt: true,
+    updatedAt: true,
+  })
+  .extend({
+    // Add custom validation rules here
+  });
 ```
 
 **Note**: Specific validators will be created for each entity defined in the data structure document.
@@ -377,6 +400,7 @@ export const createExampleSchema = insertExampleSchema.omit({
 ## 6. DOMAIN-DRIVEN DESIGN APPROACH
 
 ### 6.1 Domain Package Philosophy
+
 **Lightweight DDD**: Business logic separated from infrastructure, reusable in Phase 2 API
 
 ### 6.2 Entity Structure
@@ -387,11 +411,11 @@ Domain entities follow this pattern:
 
 ```typescript
 // packages/domain/src/entities/ExampleEntity.ts
-import { z } from 'zod';
+import { z } from "zod";
 
 export class ExampleEntity {
   constructor(
-    public readonly id: string,
+    public readonly id: string
     // ... entity-specific properties defined in data structure document
   ) {}
 
@@ -399,7 +423,7 @@ export class ExampleEntity {
   businessMethod(): Result<void, DomainError> {
     // Business rule validation
     if (!this.validateBusinessRule()) {
-      return err(new DomainError('BUSINESS_RULE_VIOLATED'));
+      return err(new DomainError("BUSINESS_RULE_VIOLATED"));
     }
 
     // Business logic
@@ -414,6 +438,7 @@ export class ExampleEntity {
 ```
 
 Domain entities encapsulate:
+
 - Business logic and rules
 - Entity-specific methods
 - Validation beyond schema constraints
@@ -430,13 +455,13 @@ Value objects follow this pattern:
 export class ExampleValueObject {
   private constructor(private readonly value: string) {}
 
-  static readonly CONSTANT_A = new ExampleValueObject('A');
-  static readonly CONSTANT_B = new ExampleValueObject('B');
+  static readonly CONSTANT_A = new ExampleValueObject("A");
+  static readonly CONSTANT_B = new ExampleValueObject("B");
 
   static fromString(value: string): Result<ExampleValueObject, ValidationError> {
     // Validation logic
     if (!isValid(value)) {
-      return err(new ValidationError('INVALID_VALUE'));
+      return err(new ValidationError("INVALID_VALUE"));
     }
     return ok(new ExampleValueObject(value));
   }
@@ -452,6 +477,7 @@ export class ExampleValueObject {
 ```
 
 Value objects represent:
+
 - Immutable domain concepts
 - Type-safe enumerations
 - Validated domain primitives
@@ -473,7 +499,7 @@ export const ExampleRules = {
   validateBusinessRule(entity: ExampleEntity): ValidationResult {
     // Centralized business rule validation
     if (!meetsRequirement(entity)) {
-      return { valid: false, error: 'REQUIREMENT_NOT_MET' };
+      return { valid: false, error: "REQUIREMENT_NOT_MET" };
     }
     return { valid: true };
   },
@@ -482,11 +508,12 @@ export const ExampleRules = {
   calculateDerivedValue(input: SomeValue): DerivedValue {
     // Business logic calculation
     return computeValue(input);
-  }
+  },
 };
 ```
 
 Business rules provide:
+
 - Centralized domain constraints
 - Reusable validation logic
 - Domain calculations
@@ -497,6 +524,7 @@ Business rules provide:
 ## 7. TESTING STRATEGY
 
 ### 7.1 Test Pyramid
+
 ```
         E2E (Detox)           <- Critical user flows only
        /                \
@@ -506,14 +534,16 @@ Unit Tests                   <- Complex domain logic only
 ```
 
 ### 7.2 Coverage Targets
-| Layer | Tool | Target | Focus |
-|-------|------|--------|-------|
-| Unit | Jest | 80%+ for domain package | Business rules, value objects |
-| Integration | Jest + RNTL | 90%+ feature coverage | User interactions, data flow |
-| E2E | Detox | 100% critical paths | Critical user flows, data persistence |
-| Components | Storybook | 100% presentational | UI states, accessibility |
+
+| Layer       | Tool        | Target                  | Focus                                 |
+| ----------- | ----------- | ----------------------- | ------------------------------------- |
+| Unit        | Jest        | 80%+ for domain package | Business rules, value objects         |
+| Integration | Jest + RNTL | 90%+ feature coverage   | User interactions, data flow          |
+| E2E         | Detox       | 100% critical paths     | Critical user flows, data persistence |
+| Components  | Storybook   | 100% presentational     | UI states, accessibility              |
 
 ### 7.3 Test Structure
+
 ```
 apps/mobile/
 ├── __tests__/
@@ -532,18 +562,59 @@ packages/domain/
 **Note**: Specific test files will be created based on entities and features defined in the data structure document.
 
 ### 7.4 Storybook Configuration
+
 ```typescript
 // apps/mobile/.storybook/main.ts
 module.exports = {
-  stories: ['../src/components/**/*.stories.tsx'],
-  addons: [
-    '@storybook/addon-essentials',
-    '@storybook/addon-react-native-web',
-  ],
+  stories: ["../src/components/**/*.stories.tsx"],
+  addons: ["@storybook/addon-essentials", "@storybook/addon-react-native-web"],
 };
 ```
 
-### 7.5 Testing Commands (turbo.json)
+### 7.5 Testing Limitations & Future Improvements
+
+**Current Limitation (Phase 1)**:
+
+- React Native 0.81.5 (required by Expo SDK 54) has ESM/Flow type syntax incompatibility with modern testing libraries
+- Using `react-test-renderer` (deprecated in React 19) with simple snapshot tests
+- Limited ability to test Tamagui component internals (components render to `null` in test environment)
+- Tests verify component construction and snapshot consistency only
+
+**Current Test Coverage**:
+
+- Component rendering without crashes ✅
+- Snapshot testing for regression detection ✅
+- Business logic unit tests (domain package) ✅
+
+**Future Solution (Phase 2 or Expo SDK 55+)**:
+When upgrading to Expo SDK 55+ with React Native 0.82+:
+
+- Migrate to `@testing-library/react-native` for proper DOM queries
+- Add user interaction testing with `fireEvent`
+- Test component props, state, and accessibility
+- Query by text, role, and testID
+- Full integration test coverage with React Native Testing Library matchers
+
+**Migration Path**:
+
+```bash
+# After React Native 0.82+ upgrade:
+pnpm add -D @testing-library/react-native @testing-library/jest-native
+pnpm remove react-test-renderer @types/react-test-renderer
+
+# Update jest.config.js to use @testing-library/react-native
+# Write robust tests with proper queries and assertions
+```
+
+**Workaround Strategy**:
+
+- Keep snapshot tests for UI regression detection
+- Focus Phase 1 testing on domain logic (business rules, value objects)
+- Use Storybook for visual component testing
+- Plan for comprehensive integration tests after RN upgrade
+
+### 7.6 Testing Commands (turbo.json)
+
 ```json
 {
   "pipeline": {
@@ -568,6 +639,7 @@ module.exports = {
 ## 8. TYPE SAFETY & VALIDATION
 
 ### 8.1 Type Flow Architecture
+
 ```
 Drizzle Schema (source of truth)
     ↓
@@ -581,10 +653,13 @@ Domain Entities (business logic)
 ```
 
 ### 8.2 Implementation Pattern
+
 ```typescript
 // 1. Define Drizzle schema
 // packages/database/src/schema/example-entity.ts
-export const exampleEntity = sqliteTable('example_entity', { /* fields defined per data structure */ });
+export const exampleEntity = sqliteTable("example_entity", {
+  /* fields defined per data structure */
+});
 
 // 2. Infer TypeScript types
 export type ExampleEntity = typeof exampleEntity.$inferSelect;
@@ -592,28 +667,30 @@ export type NewExampleEntity = typeof exampleEntity.$inferInsert;
 
 // 3. Generate Zod schemas
 // packages/database/src/validators/example-entity.ts
-import { createInsertSchema } from 'drizzle-zod';
+import { createInsertSchema } from "drizzle-zod";
 export const insertExampleSchema = createInsertSchema(exampleEntity);
 
 // 4. Use in forms
 // apps/mobile/src/features/example/ExampleForm.tsx
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { insertExampleSchema } from '@every-player/database/validators';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { insertExampleSchema } from "@every-player/database/validators";
 
 const form = useForm({
-  resolver: zodResolver(insertExampleSchema)
+  resolver: zodResolver(insertExampleSchema),
 });
 ```
 
 **Note**: Actual implementation will follow this pattern for entities defined in the data structure document.
 
 ### 8.3 Validation Boundaries
+
 - **Database Layer**: Schema constraints (NOT NULL, UNIQUE, etc.)
 - **Zod Layer**: Input validation (format, range, business constraints)
 - **Domain Layer**: Business rules (roster limits, eligibility)
 
 ### 8.4 Type Safety Enforcement
+
 ```json
 // tsconfig.json (strict settings)
 {
@@ -635,23 +712,25 @@ const form = useForm({
 ## 9. PHASE 2 PREPARATION
 
 ### 9.1 Phase 2 Overview
+
 **Timeline**: TBD after Phase 1 completion
 **Technology**: Laravel (PHP) REST API
 **Database**: MySQL or PostgreSQL (relational)
 
 ### 9.2 Phase 1 Decisions Supporting Phase 2
 
-| Decision | Phase 1 Implementation | Phase 2 Benefit |
-|----------|----------------------|----------------|
-| Shared Types Package | TypeScript interfaces | Generate PHP types or maintain parallel definitions |
-| Domain Package | Business logic in pure TS | Port to PHP Laravel services |
-| Drizzle Schema | SQLite schema with sync columns | Mirror as Laravel migrations |
-| Zod Validators | Client-side validation | Match Laravel validation rules |
-| UUID Primary Keys | Client-generated IDs | Offline creation, merge conflict resolution |
-| Soft Deletes | `deleted_at` column | Sync deleted records |
-| Timestamps | `created_at`, `updated_at` | Conflict resolution, last-write-wins |
+| Decision             | Phase 1 Implementation          | Phase 2 Benefit                                     |
+| -------------------- | ------------------------------- | --------------------------------------------------- |
+| Shared Types Package | TypeScript interfaces           | Generate PHP types or maintain parallel definitions |
+| Domain Package       | Business logic in pure TS       | Port to PHP Laravel services                        |
+| Drizzle Schema       | SQLite schema with sync columns | Mirror as Laravel migrations                        |
+| Zod Validators       | Client-side validation          | Match Laravel validation rules                      |
+| UUID Primary Keys    | Client-generated IDs            | Offline creation, merge conflict resolution         |
+| Soft Deletes         | `deleted_at` column             | Sync deleted records                                |
+| Timestamps           | `created_at`, `updated_at`      | Conflict resolution, last-write-wins                |
 
 ### 9.3 API Package Placeholder
+
 ```
 apps/api/
 ├── README.md
@@ -679,17 +758,18 @@ apps/api/
 // Phase 1: Create table, unused
 // Phase 2: Track sync state
 
-export const syncMetadata = sqliteTable('sync_metadata', {
-  id: text('id').primaryKey(),
-  lastSyncAt: integer('last_sync_at', { mode: 'timestamp' }),
-  entityType: text('entity_type').notNull(), // 'teams', 'players', etc.
-  entityId: text('entity_id').notNull(),
-  action: text('action').notNull(), // 'create', 'update', 'delete'
-  syncStatus: text('sync_status').notNull(), // 'pending', 'synced', 'conflict'
+export const syncMetadata = sqliteTable("sync_metadata", {
+  id: text("id").primaryKey(),
+  lastSyncAt: integer("last_sync_at", { mode: "timestamp" }),
+  entityType: text("entity_type").notNull(), // 'teams', 'players', etc.
+  entityId: text("entity_id").notNull(),
+  action: text("action").notNull(), // 'create', 'update', 'delete'
+  syncStatus: text("sync_status").notNull(), // 'pending', 'synced', 'conflict'
 });
 ```
 
 ### 9.5 Migration Path (Phase 1 → Phase 2)
+
 1. **API Development**: Build Laravel API mirroring local schema
 2. **Sync Service**: Add sync package to handle API communication
 3. **Conflict Resolution**: Implement strategy (last-write-wins, manual, etc.)
@@ -702,6 +782,7 @@ export const syncMetadata = sqliteTable('sync_metadata', {
 ## 10. DEVELOPMENT WORKFLOW
 
 ### 10.1 Git Workflow
+
 ```
 main (protected)
   ↓
@@ -711,17 +792,20 @@ feature/feature-name
 ```
 
 **Branch Naming**:
+
 - `feature/add-player-form`
 - `fix/roster-validation`
 - `test/e2e-team-creation`
 - `refactor/domain-entities`
 
 ### 10.2 Commit Standards
+
 **Format**: `type(scope): message`
 
 **Types**: feat, fix, test, refactor, docs, chore
 
 **Examples**:
+
 ```
 feat(roster): add player to team functionality
 test(domain): unit tests for Team entity
@@ -729,6 +813,7 @@ fix(db): migration for soft delete column
 ```
 
 ### 10.3 Pre-commit Hooks
+
 ```javascript
 // .husky/pre-commit
 #!/usr/bin/env sh
@@ -740,10 +825,7 @@ pnpm turbo type-check
 // package.json
 {
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
+    "*.{ts,tsx}": ["eslint --fix", "prettier --write"]
   }
 }
 ```
@@ -778,6 +860,7 @@ pnpm turbo type-check
 ```
 
 **EAS Workflow**:
+
 1. **Development Builds**: `eas build --profile development --platform ios`
 2. **Preview Builds**: Internal testing builds with OTA updates
 3. **Production Builds**: App store submissions
@@ -785,13 +868,14 @@ pnpm turbo type-check
 **OTA Updates**: Push JS bundle updates without app store review
 
 ### 10.5 Environment Variables
+
 ```typescript
 // apps/mobile/src/config/env.ts
-import Constants from 'expo-constants';
+import Constants from "expo-constants";
 
 export const env = {
-  APP_ENV: Constants.expoConfig?.extra?.appEnv ?? 'development',
-  API_URL: Constants.expoConfig?.extra?.apiUrl ?? '', // Phase 2
+  APP_ENV: Constants.expoConfig?.extra?.appEnv ?? "development",
+  API_URL: Constants.expoConfig?.extra?.apiUrl ?? "", // Phase 2
   // Phase 1: API_URL unused, placeholder for future
 };
 ```
@@ -822,8 +906,8 @@ jobs:
       - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'pnpm'
+          node-version: "20"
+          cache: "pnpm"
       - run: pnpm install
       - run: pnpm turbo lint
       - run: pnpm turbo type-check
@@ -857,6 +941,7 @@ jobs:
 ### 11.1 Phase 1: Mobile/Web Client (Current)
 
 **Phase 1a: Core Functionality** (Local Storage Only)
+
 - Monorepo setup (Turborepo + pnpm)
 - Database layer (Drizzle + expo-sqlite + Zod)
 - Domain package (entities, value objects, rules)
@@ -866,6 +951,7 @@ jobs:
 - EAS build pipeline
 
 **Phase 1b: Authentication Preparation** (Future)
+
 - Local user profiles (placeholder for API auth)
 - Multi-team support per user
 - Auth package structure (Phase 2 ready)
@@ -873,12 +959,14 @@ jobs:
 ### 11.2 Phase 2: REST API (Future - Placeholder Only)
 
 **Placeholder Structure Created**:
+
 - `apps/api/` directory with README
 - Shared types package prepared for API integration
 - Domain package ready for porting to PHP
 - Database schema designed for sync
 
 **Phase 2 Implementation** (when started):
+
 - Laravel API setup
 - Database migrations mirroring Phase 1 schema
 - API endpoints matching domain operations
@@ -891,6 +979,7 @@ jobs:
 ## 12. NEXT STEPS TO BEGIN PHASE 1
 
 ### 12.1 Immediate Actions
+
 1. ✅ Review and approve this planning document
 2. ⬜ Discuss data requirements (entities, relationships, fields)
 3. ⬜ Initialize monorepo structure
@@ -903,7 +992,9 @@ jobs:
 10. ⬜ Build first feature (TDD approach)
 
 ### 12.2 Data Structure Document
+
 A separate data structure document will be created to define:
+
 - Core entities and their fields
 - Entity relationships (one-to-many, many-to-many, etc.)
 - Value objects and enumerations
@@ -911,6 +1002,7 @@ A separate data structure document will be created to define:
 - Feature requirements
 
 This document will inform the implementation of:
+
 - `packages/database/src/schema/` - Drizzle schemas
 - `packages/domain/src/entities/` - Domain entities
 - `packages/domain/src/value-objects/` - Value objects
@@ -922,12 +1014,14 @@ This document will inform the implementation of:
 ## 13. DOCUMENTATION MAINTENANCE
 
 This planning document should be updated when:
+
 - Technology decisions change
 - New packages added to monorepo
 - Phase 2 implementation begins
 - Major architectural changes
 
 **Version History**:
+
 - v1.0 (2025-10-29): Initial planning document created
 - v1.1 (2025-10-29): Changed UI library from React Native Paper to Tamagui
 - v1.2 (2025-10-29): Removed specific data entity examples, references separate data structure document
@@ -937,6 +1031,7 @@ This planning document should be updated when:
 ## 14. APPENDIX
 
 ### 14.1 Key Dependencies Reference
+
 ```json
 {
   "expo": "~50.x",
@@ -952,6 +1047,7 @@ This planning document should be updated when:
 ```
 
 ### 14.2 Useful Commands
+
 ```bash
 # Development
 pnpm dev              # Start all dev servers

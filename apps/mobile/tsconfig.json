@@ -4,7 +4,7 @@
     "jsx": "react-native",
     "composite": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "tamagui.config.ts"],

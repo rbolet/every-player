@@ -11,7 +11,7 @@ export default function Index() {
         paddingHorizontal="$4"
         paddingVertical="$6"
       >
-        <H1 size="$12" color="$text" fontWeight="900" letterSpacing="$1" textAlign="center">
+        <H1 size="$12" color="$primary" fontWeight="900" letterSpacing="$1" textAlign="center">
           DON'T
         </H1>
         <H1 size="$12" color="$secondary" fontWeight="900" letterSpacing="$1" textAlign="center">
